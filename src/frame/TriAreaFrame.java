@@ -43,11 +43,11 @@ public class TriAreaFrame extends JFrame {
 		});
 	}
 	/**
-	 * 
-	 * @param s1
-	 * @param s2
-	 * @param s3
-	 * @return
+	 * Returns a boolean true if 3 values can be the sides of a triangle
+	 * @param s1	Side 1
+	 * @param s2	Side 2
+	 * @param s3	Side 3
+	 * @return	true for a triangle, false otherwise
 	 */
 	public static boolean isValid(double s1, double s2, double s3){
 		if(s1+s2>s3&&s2+s3>s1&&s3+s1>s2){
@@ -56,7 +56,6 @@ public class TriAreaFrame extends JFrame {
 			return(false);
 		}
 	}
-	
 	
 	/**
 	 * Create the frame.
@@ -96,6 +95,9 @@ public class TriAreaFrame extends JFrame {
 		btnCalculate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//Variables List
+				double side1;	//Three user input triangle sides
+				double side2;
+				double side3;
 				
 			}
 		});
