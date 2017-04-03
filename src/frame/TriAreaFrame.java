@@ -1,3 +1,10 @@
+/*			Triangle Area
+ * 
+ * Programmer: Nick Couzelis
+ * 		 Date: 02/03/2017
+ * 
+ * This program finds the area of a triangle from three user input side lengths.
+ */
 package frame;
 
 import java.awt.BorderLayout;
@@ -35,7 +42,22 @@ public class TriAreaFrame extends JFrame {
 			}
 		});
 	}
-
+	/**
+	 * 
+	 * @param s1
+	 * @param s2
+	 * @param s3
+	 * @return
+	 */
+	public static boolean isValid(double s1, double s2, double s3){
+		if(s1+s2>s3&&s2+s3>s1&&s3+s1>s2){
+			return(true);
+		} else {
+			return(false);
+		}
+	}
+	
+	
 	/**
 	 * Create the frame.
 	 */
@@ -73,6 +95,7 @@ public class TriAreaFrame extends JFrame {
 		// Action
 		btnCalculate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//Variables List
 				
 			}
 		});
