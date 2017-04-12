@@ -43,7 +43,7 @@ public class TriAreaFrame extends JFrame {
 		});
 	}
 	/**
-	 * Returns a boolean true if 3 values can be the sides of a triangle
+	 * Returns a boolean true if 3 values can be the side lengths of a triangle
 	 * @param s1	Side 1
 	 * @param s2	Side 2
 	 * @param s3	Side 3
@@ -56,7 +56,17 @@ public class TriAreaFrame extends JFrame {
 			return(false);
 		}
 	}
-	
+	/**
+	 * Returns a double of the area of a triangle with the three given sides
+	 * @param a	Side 1
+	 * @param b	Side 2
+	 * @param c	Side 3
+	 * @return double value representing the area
+	 */
+	public static double triangleArea(double a, double b, double c){
+		double s = (a+b+c)/2;
+		return(Math.sqrt(s*(s-a)*(s-b)*(s-c)));
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -91,14 +101,26 @@ public class TriAreaFrame extends JFrame {
 		txtSide3.setColumns(10);
 		
 		JButton btnCalculate = new JButton("Calculate");
-		// Action
+		// After the calculate button is clicked the values are tested then the output is formed.
 		btnCalculate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//Variables List
-				double side1;	//Three user input triangle sides
-				double side2;
-				double side3;
-				
+				double s1;	//Three user input triangle side lengths
+				double s2;
+				double s3;
+				try{			//Checking for integer.
+					s1 = Double.parseDouble(txtSide1.getText());
+					s2 = Double.parseDouble(txtSide2.getText());
+					s3 = Double.parseDouble(txtSide3.getText());
+				} catch(NullPointerException|NumberFormatException x){
+					txtResult.setText("Invalid Input.");	// Displayed if given an empty value or not a number.
+					return;
+				}
+				if(isValid(s1,s2,s3)){	//If the lengths could make a triangle, it's area is found, rounded to the thousandth, and output.
+					txtResult.setText("Area ="+Double.toString(Math.round(triangleArea(s1,s2,s3)*1000.0)/1000.0));
+				} else {
+					txtResult.setText("Invalid Triangle");
+				}
 			}
 		});
 		btnCalculate.setBounds(106, 10, 130, 32);
